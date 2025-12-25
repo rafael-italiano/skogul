@@ -1,0 +1,38 @@
+name: Lint & Type Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Set up Python
+        run: |
+          uv python install 3.14
+          uv python pin 3.14
+
+      - name: Sync dependencies
+        run: uv sync
+
+      - name: Ruff
+        run: |
+          uv run ruff check .
+
+      - name: Black
+        run: |
+          uv run black --check .
+
+      - name: Mypy
+        run: |
+          uv run mypy .
