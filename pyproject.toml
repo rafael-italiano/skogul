@@ -7,3 +7,28 @@ requires-python = ">=3.14"
 dependencies = [
     "django>=6.0",
 ]
+
+[tool.black]
+line-length = 88
+target-version = ["py314"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+fix = true
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle
+  "F",   # pyflakes
+  "W",   # warnings
+  "I",   # isort
+  "UP",  # pyupgrade
+  "B",   # bugbear
+]
+ignore = [
+  "E501",
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
