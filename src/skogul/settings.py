@@ -70,20 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "skogul.wsgi.application"
 
-
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": constants.POSTGRES_DB,
-        "USER": constants.POSTGRES_USER,
-        "PASSWORD": constants.POSTGRES_PASSWORD,
-        "HOST": constants.POSTGRES_HOST,
-        "PORT": "5432",
-    }
-}
+DATABASES: dict[str, str | int] = {}
 
 
 # Password validation
