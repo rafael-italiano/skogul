@@ -12,4 +12,4 @@ python src/manage.py collectstatic --noinput
 
 echo "Preparing Vercel static output"
 mkdir -p .vercel/output/static
-cp -r staticfiles/* .vercel/output/static/
+cp -r src/staticfiles/* .vercel/output/static/
