@@ -6,7 +6,7 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN ["uv", "sync", "--frozen", "--no-cache", "--python-preference=only-managed"]
 
-FROM dhi.io/python:3.14
+FROM dhi.io/python:3.12
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
