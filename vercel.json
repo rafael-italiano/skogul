@@ -14,12 +14,12 @@
   ],
   "routes": [
     {
-      "src": "/src/static/(.*)",
-      "dest": "/src/static/$1"
+      "src": "src/static/(.*)",
+      "dest": "src/static/$1"
     },
     {
-      "src": "/src/(.*)",
-      "dest": "skogul/wsgi.py"
+      "src": "src/(.*)",
+      "dest": "src/skogul/wsgi.py"
     }
   ]
 }
