@@ -5,7 +5,7 @@
       "use": "@vercel/python"
     },
     {
-      "src": "scripts/build_vercel.sh",
+      "src": "build_vercel.sh",
       "use": "@vercel/static-build"
     }
   ],
