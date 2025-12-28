@@ -20,3 +20,4 @@ sys.path.insert(0, str(BASE_DIR))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "skogul.settings")
 
 application = get_wsgi_application()
+app = application
