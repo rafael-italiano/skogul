@@ -4,9 +4,12 @@ set -euo pipefail
 echo "Installing dependencies"
 pip install -r requirements.txt
 
-echo "Collecting static files"
-python manage.py collectstatic --noinput
+echo "Setting PYTHONPATH"
+export PYTHONPATH="$PWD/src"
 
-echo "Preparing Vercel output"
+echo "Collecting static files"
+python src/manage.py collectstatic --noinput
+
+echo "Preparing Vercel static output"
 mkdir -p .vercel/output/static
 cp -r staticfiles/* .vercel/output/static/
