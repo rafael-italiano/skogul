@@ -17,4 +17,4 @@ COPY --from=builder /app/.venv /app/.venv
 COPY --from=builder /app/.uv /app/.uv
 COPY ./src .
 
-CMD ["python", "-m", "gunicorn", "skogul.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["python", "-m", "gunicorn", "skogul.wsgi:application", "--bind", "0.0.0.0:8000", "-w", "3"]

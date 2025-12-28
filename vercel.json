@@ -1,0 +1,25 @@
+{
+  "builds": [
+    {
+      "src": "skogul/wsgi.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "build_vercel.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "src/staticfiles"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/src/static/(.*)",
+      "dest": "/src/static/$1"
+    },
+    {
+      "src": "/src/(.*)",
+      "dest": "skogul/wsgi.py"
+    }
+  ]
+}

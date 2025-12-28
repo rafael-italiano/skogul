@@ -10,12 +10,11 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
+
 
     - name: Install uv
-      run: |
-        curl -LsSf https://astral.sh/uv/install.sh | sh
-        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+      uses: astral-sh/setup-uv@v3
 
     - name: Set up Python
       run: |
@@ -23,9 +22,18 @@ jobs:
         uv python pin 3.14
 
     - name: Sync dependencies
-      run: uv sync
+      run: uv sync --frozen
 
     - name: Run pre-commit
       run: |
-        uv tool install pre-commit
-        pre-commit run --all-files --show-diff-on-failure
+        uvx pre-commit run --all-files --show-diff-on-failure
+    - name: Export requirements.txt from uv.lock
+      run: |
+        uv export \
+        --format requirements-txt \
+        --no-dev \
+        -o requirements.txt
+
+    - name: Check for diff
+      run: |
+        git diff --exit-code requirements.txt
