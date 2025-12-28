@@ -29,3 +29,24 @@ jobs:
       run: |
         uv tool install pre-commit
         pre-commit run --all-files --show-diff-on-failure
+
+  requirements-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+
+    - name: Export requirements.txt from uv.lock
+      run: |
+        uv export \
+        --format requirements-txt \
+        --only main \
+        --no-hashes \
+        -o requirements.txt
+
+    - name: Check for diff
+      run: |
+        git diff --exit-code requirements.txt

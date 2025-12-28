@@ -27,3 +27,11 @@ repos:
     - types-requests
     args:
     - --config-file=mypy.ini
+
+- repo: local
+  hooks:
+  - id: uv-export-requirements
+    name: Export requirements.txt from uv.lock
+    entry: uv export --format requirements-txt --no-dev > requirements.txt
+    language: system
+    files: ^(uv\.lock|pyproject\.toml)$
