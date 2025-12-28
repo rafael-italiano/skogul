@@ -1,23 +1,21 @@
 {
   "builds": [
     {
-      "src": "src/skogul/wsgi.py",
+      "src": "skogul/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.14" }
     },
     {
-      "src": "build_files.sh",
-      "use": "@vercel/static-build",
-      "config": { "distDir": ".vercel/output" }
+      "src": "scripts/build_vercel.sh",
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
     {
-      "src": "/src/static/(.)",
-      "dest": "/staticfiles/$1"
+      "src": "/src/static/(.*)",
+      "dest": "/src/static/$1"
     },
     {
-      "src": "/src/(.)",
+      "src": "/src/(.*)",
       "dest": "skogul/wsgi.py"
     }
   ]
