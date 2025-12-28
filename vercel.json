@@ -2,7 +2,7 @@
   "builds": [
     {
       "src": "skogul/wsgi.py",
-      "use": "@vercel/python",
+      "use": "@vercel/python"
     },
     {
       "src": "scripts/build_vercel.sh",
