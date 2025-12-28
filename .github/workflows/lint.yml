@@ -43,7 +43,8 @@ jobs:
       run: |
         uv export \
         --format requirements-txt \
-        --no-dev > requirements.txt
+        --no-dev \
+        -o requirements.txt
 
     - name: Check for diff
       run: |
