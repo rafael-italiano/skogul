@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PYTHON_VERSION="3.14"
+PYTHON_VERSION="3.12"
 
 echo "🚀 Bootstrapping development environment..."
 
